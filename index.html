@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <title>British Balloon Bash 2026 | Official App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Hide pages until JS activates one (prevents flash/overlap) -->
+    <style>
+      .app-page {
+        visibility: hidden;
+      }
+      .app-page.active {
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="app-nav">
+      <a href="#" class="nav-logo" onclick="router('home')">BBB 2026</a>
+      <div class="nav-links">
+        <button
+          class="nav-btn active"
+          onclick="router('home')"
+          aria-label="Home"
+        >
+          <span class="material-symbols-outlined">home</span>
+        </button>
+        <button
+          class="nav-btn"
+          onclick="router('schedule')"
+          aria-label="Schedule"
+        >
+          <span class="material-symbols-outlined">calendar_month</span>
+        </button>
+        <button class="nav-btn" onclick="router('rules')" aria-label="Rules">
+          <span class="material-symbols-outlined">gavel</span>
+        </button>
+        <button class="nav-btn" onclick="router('faq')" aria-label="FAQ">
+          <span class="material-symbols-outlined">help</span>
+        </button>
+        <button id="theme-toggle" class="nav-btn" aria-label="Toggle dark mode">
+          <span class="material-symbols-outlined" id="theme-icon"
+            >dark_mode</span
+          >
+        </button>
+      </div>
+    </nav>
+
+    <main class="page-container">
+      <!-- Home -->
+      <section id="home" class="app-page active">
+        <h2>Welcome!</h2>
+        <div class="card hero-card">
+          <span class="hero-subtitle">Official App</span>
+          <h1 class="hero-title">British Balloon Bash</h1>
+          <p class="hero-date">February 27 - March 1 2026</p>
+
+          <div class="card highlight-card">
+            <p id="next-event">
+              Next: <strong id="countdown">Calculating...</strong>
+            </p>
+          </div>
+
+          <button class="btn" onclick="router('schedule')">
+            View Schedule
+          </button>
+        </div>
+        <p>
+          Your friendly companion app to British Balloon Bash 2026. Check the
+          schedule, read the rules, and get excited 🎈
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Instructors</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Days</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">1000+</div>
+            <div class="stat-label">Balloons</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule" class="app-page">
+        <h2>Event Schedule</h2>
+
+        <div class="schedule-toggle">
+          <button class="toggle-btn active" onclick="showView('event')">
+            Full Schedule
+          </button>
+          <button class="toggle-btn" onclick="showView('classes')">
+            Class Schedule
+          </button>
+        </div>
+
+        <div id="event-view" class="schedule-view active">
+          <div class="event-overview card">
+            <h3 class="event-title">Full Schedule</h3>
+            <div class="event-days">
+              <div class="day-group">
+                <h4>Friday 27 Feb</h4>
+                <ul>
+                  <li>08:00-09:00 Beginner Class</li>
+                  <li>09:00-09:45 Registration</li>
+                  <li>09:45-11:00 Welcome / Ice Breaker</li>
+                  <li>11:00-23:59 Jam Area Open</li>
+                  <li>11:00-12:30 Classes</li>
+                  <li>12:30-14:00 Lunch Buffet</li>
+                  <li>14:00-15:30 Classes</li>
+                  <li>15:30-16:00 Break</li>
+                  <li>16:00-17:30 Classes</li>
+                  <li>19:30-22:00 Competition Time</li>
+                </ul>
+              </div>
+
+              <div class="day-group">
+                <h4>Saturday 28 Feb</h4>
+                <ul>
+                  <li>09:00-23:59 Jam Area Open</li>
+                  <li>10:30-12:00 Classes</li>
+                  <li>12:00-12:30 Group Photo</li>
+                  <li>12:30-14:00 Lunch Buffet</li>
+                  <li>14:00-15:30 Classes</li>
+                  <li>15:30-16:00 Break</li>
+                  <li>16:00-17:30 Classes</li>
+                  <li>19:30-22:00 Evening Entertainment & Awards</li>
+                </ul>
+              </div>
+
+              <div class="day-group">
+                <h4>Sunday 1 Mar</h4>
+                <ul>
+                  <li>09:00-15:00 Jam Area Open</li>
+                  <li>10:30-12:00 Classes</li>
+                  <li>12:00-13:30 Lunch Buffet</li>
+                  <li>13:30-15:00 Classes</li>
+                  <li>15:15-15:45 Closing Ceremony</li>
+                  <li>19:30-22:00 Post Bash Meal</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="classes-view" class="schedule-view">
+          <div class="day-tabs">
+            <button class="day-tab active" data-day="friday">Friday</button>
+            <button class="day-tab" data-day="saturday">Saturday</button>
+            <button class="day-tab" data-day="sunday">Sunday</button>
+          </div>
+
+          <div id="classes-container" class="classes-wrapper"></div>
+
+          <div class="legend">
+            <span class="badge-bf">BF</span> = Beginner Friendly<br />
+            <span class="badge-bonus">Bonus</span> = Sponsor-provided
+            Deco-twisting classes
+          </div>
+
+          <div class="map-preview">
+            <a
+              href="assets/Grand Hotel Map.svg"
+              target="_blank"
+              class="map-link"
+            >
+              <img
+                src="assets/Grand Hotel Map.svg"
+                alt="Grand Hotel Map Preview"
+                class="map-thumb"
+              />
+            </a>
+            <p>Venue map - tap to view full size</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rules -->
+      <section id="rules" class="app-page">
+        <h2>Convention Rules</h2>
+        <p>Please follow these to keep the weekend awesome for everyone.</p>
+
+        <div class="card">
+          <h3>General Guidelines</h3>
+          <p>Let's keep the weekend fun, safe, and welcoming for everyone 🎈</p>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <div>
+              <h4>Jam Area Safety</h4>
+              <p>
+                Keep it tidy — dispose of popped balloons, scraps and packaging
+                properly. No sharp objects (scissors, pumps, knives) left
+                unattended near balloons.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">photo_camera</span>
+            </div>
+            <div>
+              <h4>Photography & Social Media</h4>
+              <p>
+                Take tons of pics and tag us! Ask permission before close-ups of
+                other people's work or faces. No photos/videos during classes
+                unless the instructor says it's okay.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">school</span>
+            </div>
+            <div>
+              <h4>Class Etiquette</h4>
+              <p>
+                Arrive on time (or early!). Respect the pace — especially in
+                Beginner Friendly (BF) classes. No talking over the instructor.
+                Phones on silent/vibrate.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">volume_off</span>
+            </div>
+            <div>
+              <h4>Quiet Hours</h4>
+              <p>
+                Keep corridors and public areas quiet after 11:00 PM. Respect
+                other hotel guests — they're not all here for balloons.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">group</span>
+            </div>
+            <div>
+              <h4>Respect & Inclusivity</h4>
+              <p>
+                Be kind. No harassment, bullying, or disrespectful comments
+                (verbal or online). We're all here to twist and have fun — treat
+                everyone with respect regardless of skill level, age, or
+                background.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">no_drinks</span>
+            </div>
+            <div>
+              <h4>Jam Area Rules</h4>
+              <p>
+                No alcohol or food in the jam area (hotel rules). Clean up after
+                yourself so the space stays usable all weekend.
+              </p>
+            </div>
+          </div>
+
+          <div class="rule-item">
+            <div class="rule-icon">
+              <span class="material-symbols-outlined">ballot</span>
+            </div>
+            <div>
+              <h4>Children & Supervision</h4>
+              <p>
+                Under-18s must be accompanied by a registered adult at all
+                times. Parents are responsible for their kids' safety and
+                behaviour.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="app-page">
+        <h2>FAQ</h2>
+        <p>Quick answers to common questions.</p>
+
+        <div class="card">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              How do the competitions work?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Quick rundown of our three main comps—everyone's welcome, it's
+                all about fun! Details announced on-site too.
+              </p>
+
+              <!-- Nested accordions start here -->
+              <div class="accordion-item nested">
+                <button class="accordion-header">
+                  5 Minute Competition<span class="material-symbols-outlined"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="accordion-content">
+                  <ul>
+                    <li>5 minutes to create your design.</li>
+                    <li>Only latex balloons allowed.</li>
+                    <li>Pens/markers OK.</li>
+                    <li>
+                      All work (inflating, artwork, double-stuffing, etc.) must
+                      happen in the 5 minutes—no prep allowed.
+                    </li>
+                    <li>
+                      Bring your own balloons, spares (pops happen!), pump,
+                      cutters, markers.
+                    </li>
+                    <li>
+                      Write your badge number on the balloon during the time.
+                    </li>
+                    <li>Over 5 minutes = disqualified.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="accordion-item nested">
+                <button class="accordion-header">
+                  30 Minute Competition<span class="material-symbols-outlined"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="accordion-content">
+                  <ul>
+                    <li>30 minutes to create your design.</li>
+                    <li>Any balloons allowed.</li>
+                    <li>
+                      Pens/markers, stickers, lights, non-balloon embellishments
+                      OK.
+                    </li>
+                    <li>All work must be done in the 30 minutes—no prep.</li>
+                    <li>
+                      Bring your balloons, spares, pump, cutters, markers.
+                    </li>
+                    <li>
+                      Design must be complete and free-standing on the table at
+                      end.
+                    </li>
+                    <li>
+                      Small table-top stands allowed (fit in your area, not
+                      judged, just for support).
+                    </li>
+                    <li>Write your badge number during the time.</li>
+                    <li>Over 30 minutes = disqualified.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="accordion-item nested">
+                <button class="accordion-header">
+                  Iron Man Competition<span class="material-symbols-outlined"
+                    >expand_more</span
+                  >
+                </button>
+                <div class="accordion-content">
+                  <ul>
+                    <li>
+                      30 minutes to create your design (no need to make actual
+                      Iron Man!).
+                    </li>
+                    <li>Only the balloons provided to you.</li>
+                    <li>
+                      EVERY balloon must be used (even as scraps) and at least
+                      partially inflated (puff counts).
+                    </li>
+                    <li>If one pops, raise your hand—someone replaces it.</li>
+                    <li>No using balloons just as string/ties.</li>
+                    <li>Pens/markers OK; no stickers/lights/embellishments.</li>
+                    <li>All work in the 30 minutes—no prep.</li>
+                    <li>Bring your own pump, cutters, markers.</li>
+                    <li>May need to prove every balloon was inflated/used.</li>
+                    <li>Write your badge number during the time.</li>
+                    <li>Over 30 minutes = disqualified.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              What is the Jam Area?<span class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                A free space to twist, chat, share ideas, and hang out all
+                weekend. It's open pretty much whenever you're not in classes.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Where is the nearest shop?<span class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                There is a Co-op just a 5-minute walk from the hotel.<br />
+                <a
+                  href="https://maps.app.goo.gl/hzUg2AK1Pmn343jk9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="external-link"
+                >
+                  Open directions on Google Maps
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Where is the nearest chippy for late-night snacks?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Tony Twist swears by Nelly's Fish, Chicken & Ribs—best chips
+                around, only 6 minutes' walk.<br />
+                <a
+                  href="https://maps.app.goo.gl/21F5TEKATTToe82c8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="external-link"
+                >
+                  Open directions on Google Maps
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Where can I park my car during the event?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Hotel guests: register your vehicle at check-in and park outside
+                for the whole stay. Easy peasy.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Do I need to bring my own balloons and supplies?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Nope! Sponsors provide loads of balloons for classes and
+                jamming. Bring your favourite pump or tools if you want, but
+                everything's there if you forget.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              What happens if I miss a class or arrive late?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Classes start promptly—late entry might mean missing key steps.
+                Instructors are usually cool about quiet latecomers, but respect
+                the pace (especially BF classes). Check the schedule and aim to
+                be early!
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Is there Wi-Fi or charging available?<span
+                class="material-symbols-outlined"
+                >expand_more</span
+              >
+            </button>
+            <div class="accordion-content">
+              <p>
+                Hotel Wi-Fi should be free in public areas/rooms (check on
+                arrival). It's a good idea to bring your own charger/power.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
