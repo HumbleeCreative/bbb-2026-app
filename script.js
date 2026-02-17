@@ -252,8 +252,8 @@ function renderDay(day) {
 function getRoomEmoji(room) {
   const logos = {
     Hamilton: "assets/BBB Dog.svg",
-    Neville: "assets/Bestex B-solo.svg",
-    Mortimer: "assets/Gemar logo.svg",
+    Neville: "assets/Gemar logo.svg",
+    Mortimer: "assets/Bestex B-solo.svg",
     Beaufort: "assets/Sempertex windmill.svg",
   };
 
