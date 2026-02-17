@@ -53,9 +53,8 @@ const scheduleData = {
         { room: "Mortimer", instructor: "Alberto", design: "Old is Gold" },
         {
           room: "Beaufort",
-          instructor: "Audrey",
-          design: "Deco-twisting",
-          badge: "Bonus",
+          instructor: "",
+          design: "",
         },
       ],
     },
@@ -88,8 +87,8 @@ const scheduleData = {
         { room: "Hamilton", instructor: "Kimberley", design: "Squishy Cuties" },
         {
           room: "Neville",
-          instructor: "Alberto",
-          design: "Old is Gold",
+          instructor: "Irina",
+          design: "Soldier",
           badge: "BF",
         },
         { room: "Mortimer", instructor: "", design: "" },
@@ -252,8 +251,8 @@ function renderDay(day) {
 function getRoomEmoji(room) {
   const logos = {
     Hamilton: "assets/BBB Dog.svg",
-    Neville: "assets/Bestex B-solo.svg",
-    Mortimer: "assets/Gemar logo.svg",
+    Neville: "assets/Gemar logo.svg",
+    Mortimer: "assets/Bestex B-solo.svg",
     Beaufort: "assets/Sempertex windmill.svg",
   };
 
